@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/main.css">
+  <title>Herramientas Tecnicas</title>
+</head>
+
+<body>
+
+  <div class="grid-flex">
+    
+    <div class="grillaPrincipal">
+
+      <div class="tradingview-widget-container sp">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+          {
+          "interval": "1m",
+          "width": 370,
+          "isTransparent": false,
+          "height": 450,
+          "symbol": "SP:SPX",
+          "showIntervalTabs": true,
+          "locale": "es",
+          "colorTheme": "dark"
+          }
+          </script>
+      </div>
+      <div class="tradingview-widget-container nq">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+          {
+          "interval": "1m",
+          "width": "370",
+          "isTransparent": false,
+          "height": "450",
+          "symbol": "NASDAQ:NDX",
+          "showIntervalTabs": true,
+          "locale": "es",
+          "colorTheme": "dark"
+          }
+          </script>
+      </div>
+      <div class="tradingview-widget-container dow">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+          {
+          "interval": "1m",
+          "width": 370,
+          "isTransparent": false,
+          "height": 450,
+          "symbol": "OANDA:US30USD",
+          "showIntervalTabs": true,
+          "locale": "es",
+          "colorTheme": "dark"
+          }
+          </script>
+      </div>
+
+
+      <div class="tradingview-widget-container grilla";>
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+        {
+        "width": 750,
+        "height": 300,
+        "symbolsGroups": [
+          {
+            "name": "Índices",
+            "originalName": "Indices",
+            "symbols": [
+              {
+                "name": "CAPITALCOM:US500",
+                "displayName": "S&P 500"
+              },
+              {
+                "name": "NASDAQ:NDX",
+                "displayName": "Nasdaq"
+              },
+              {
+                "name": "OANDA:US30USD",
+                "displayName": "Dow Jones"
+              }
+            ]
+          }
+        ],
+        "showSymbolLogo": true,
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "locale": "es"
+        }
+        </script>
+      </div>
+
+      <div class="tradingview-widget-container noti">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+          {
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "width": "370",
+          "height": "300",
+          "locale": "es",
+          "importanceFilter": "-1,0,1",
+          "currencyFilter": "USD"
+          }
+          </script>
+      </div>
+
+    </div>
+
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+        {
+        "symbol": "CAPITALCOM:VIX",
+        "width": 350,
+        "height": 450,
+        "locale": "es",
+        "dateRange": "12M",
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "autosize": false,
+        "largeChartUrl": "" 
+        }
+      </script>
+    </div>
+
+  </div>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>

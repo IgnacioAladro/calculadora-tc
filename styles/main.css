@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #1e222d;
+}
+
+.bienvenida {
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    padding: .5rem;
+}
+
+.grid-flex {
+    display: flex;
+    padding: .5rem;
+    gap: .3rem;
+    justify-content: center;
+}
+
+.grillaPrincipal {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    grid-template-areas: 
+    "sp      nq      dow"
+    "grilla  grilla  noti";
+
+    gap: .3rem;
+}
+
+.sp {
+    grid-area: sp;
+}
+
+.nq {
+    grid-area: nq;
+}
+
+.dow {
+    grid-area: dow;
+}
+
+.grilla {
+    grid-area: grilla;
+}
+
+.noti {
+    grid-area: noti;
+}
