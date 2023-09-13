@@ -9,7 +9,7 @@ function multiplicador(capital, tipoDeCambio) {
     return resultado;
 }
 
-let respuestaUsuario = prompt("Hola, bienvenid@ al conversor de divisas\n¿Quieres saber el tipo de cambio para una divisa?");
+let respuestaUsuario = prompt("Hola, bienvenid@ al conversor de divisas\n¿Quieres convertir una divisa?");
 
 while (respuestaUsuario.toUpperCase() == "SI") {
     const DIVISA_UNO = prompt("Elije la divisa que quieres cambiar\nEUR -- USD -- ARS -- CNY -- BTC")
