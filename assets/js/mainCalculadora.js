@@ -1,16 +1,15 @@
 console.log("Estan viendo un simulador de conversion de monedas, por el momento el tipo de cambio va a ser fijo. A futuro la idea seria que la plataforma tome ese dato de otro lado para que se actualice todo el tiempo.");
 
-let historial = [];
+let historial = localStorage.getItem("historial");
+
+if (historial) {
+    historial = JSON.parse(historial);
+    actualizarHistorial(historial);
+} else {
+    historial = [];
+}; 
 
 const BOTON_CALCULAR = document.getElementById("botonCalcular");
-
-window.addEventListener("load", function () {
-    const historial = localStorage.getItem("historial");
-    if (historial) {
-        historial = JSON.parse(historial);
-        actualizarHistorial();
-    }
-}); 
 
 BOTON_CALCULAR.addEventListener("click", calcularConversion);
 
@@ -25,7 +24,7 @@ function calcularConversion() {
     };
 
     if (isNaN(CAPITAL) || CAPITAL <= 0) {
-        document.getElementById("resultado").innerHTML = "Ingrese un monto válido y mayor que cero.";
+        document.getElementById("resultado").innerHTML = "Ingrese un monto valido y mayor que cero.";
         return;
     }
 
@@ -38,23 +37,24 @@ function calcularConversion() {
             monedaQueElegiste: DIVISA,
             resultado: RESULTADO
         };
-
+        
         historial.push(CONVERSION);
-        actualizarHistorial();
+        localStorage.setItem("historial", JSON.stringify(historial));
+        actualizarHistorial(historial);
         
     } else {
         document.getElementById("resultado").innerHTML = "Debe ingresar un monto valido";
     }
 };
 
-function actualizarHistorial() {
+function actualizarHistorial(histo) {
     const NUEVO_HISTORIAL = document.getElementById("historial").getElementsByTagName('tbody')[0];
     
     while (NUEVO_HISTORIAL.firstChild) {
         NUEVO_HISTORIAL.removeChild(NUEVO_HISTORIAL.firstChild);
     }
 
-    historial.forEach(conversion => {
+    histo.forEach(conversion => {
         const row = document.createElement("tr");
         row.innerHTML = 
             `<td>${conversion.tuDinero} ARS</td>
@@ -62,12 +62,13 @@ function actualizarHistorial() {
             <td>${conversion.resultado}</td>`;
         NUEVO_HISTORIAL.appendChild(row);
     });
-}
+};
 
 const BOTON_BORRAR_HISTORIAL = document.getElementById("borrarHistorial");
 BOTON_BORRAR_HISTORIAL.addEventListener("click", function () {
-    historial.length = 0;
-    actualizarHistorial();
+    historial = [];
+    localStorage.setItem("historial", JSON.stringify(historial));
+    actualizarHistorial(historial);
 });
 
 BOTON_CALCULAR.addEventListener("click", calcularConversion);
