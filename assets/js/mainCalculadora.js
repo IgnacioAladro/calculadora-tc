@@ -1,5 +1,3 @@
-console.log("Estan viendo un simulador de conversion de monedas, por el momento el tipo de cambio va a ser fijo. A futuro la idea seria que la plataforma tome ese dato de otro lado para que se actualice todo el tiempo.");
-
 function calcularConversion() {
     const CAPITAL = parseFloat(document.getElementById("capital").value);
     const DIVISA = document.getElementById("divisa").value;
@@ -41,23 +39,24 @@ function actualizarHistorial(datos) {
         NUEVO_HISTORIAL.removeChild(NUEVO_HISTORIAL.firstChild);
     }
 
-    datos.forEach(conversion => {
+    for (let i = datos.length - 1; i >= 0; i--) {
+        const conversion = datos[i];
         const row = document.createElement("tr");
-        row.innerHTML = 
+        row.innerHTML =
             `<td>${conversion.tuDinero} ARS</td>
             <td>${conversion.monedaQueElegiste}</td>
             <td>${conversion.resultado}</td>`;
         NUEVO_HISTORIAL.appendChild(row);
-    });
+    };
 };
 
-let historial = localStorage.getItem("historial");
+let historial = JSON.parse(localStorage.getItem("historial")) || [];
 
 const BOTON_CALCULAR = document.getElementById("botonCalcular");
 BOTON_CALCULAR.addEventListener("click", calcularConversion);
 
 if (historial) {
-    historial = JSON.parse(historial);
+    historial = JSON.parse(localStorage.getItem("historial"));
     actualizarHistorial(historial);
 } else {
     historial = [];
