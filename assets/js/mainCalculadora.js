@@ -22,12 +22,15 @@ function calcularConversion() {
 
     if (!isNaN(CAPITAL) && TIPO_DE_CAMBIO[DIVISA]) {
         const RESULTADO = (CAPITAL / TIPO_DE_CAMBIO[DIVISA]).toFixed(DIVISA === "btc" ? 8 : 2);
+        const FECHA_HORA = luxon.DateTime;
+
         document.getElementById("resultado").innerHTML = `${CAPITAL} ARS = ${RESULTADO} ${DIVISA.toUpperCase()}`;
 
         const CONVERSION = {
             tuDinero: CAPITAL,
-            monedaQueElegiste: DIVISA,
-            resultado: RESULTADO
+            monedaQueElegiste: DIVISA.toUpperCase(),
+            resultado: RESULTADO,
+            fechaHora: FECHA_HORA.now().toFormat("dd/MM/yyyy - HH:mm:ss")
         };
         
         historial.push(CONVERSION);
@@ -57,9 +60,10 @@ function actualizarHistorial(datos) {
         const conversion = datos[i];
         const row = document.createElement("tr");
         row.innerHTML =
-            `<td>${conversion.tuDinero} ARS</td>
+            `<td>${conversion.fechaHora}</td>
+            <td>${conversion.tuDinero.toLocaleString("es-AR")} ARS</td>
             <td>${conversion.monedaQueElegiste}</td>
-            <td>${conversion.resultado}</td>`;
+            <td>${conversion.resultado.toString().replace(".", ",")}</td>`;
         NUEVO_HISTORIAL.appendChild(row);
     };
 };
