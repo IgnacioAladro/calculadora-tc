@@ -9,13 +9,20 @@ function calcularConversion() {
     };
 
     if (isNaN(CAPITAL) || CAPITAL <= 0) {
-        document.getElementById("resultado").innerHTML = "Ingrese un monto valido y mayor que cero.";
+        Swal.fire({
+            icon: "error",
+            text: "Ingrese un monto valido y mayor que cero.",
+            showConfirmButton: false,
+            position: "top",
+            timer: 2500,
+            toast: true
+        });
         return;
     }
 
     if (!isNaN(CAPITAL) && TIPO_DE_CAMBIO[DIVISA]) {
         const RESULTADO = (CAPITAL / TIPO_DE_CAMBIO[DIVISA]).toFixed(DIVISA === "btc" ? 8 : 2);
-        document.getElementById("resultado").innerHTML = `${CAPITAL} ARS = ${RESULTADO} ${DIVISA}`;
+        document.getElementById("resultado").innerHTML = `${CAPITAL} ARS = ${RESULTADO} ${DIVISA.toUpperCase()}`;
 
         const CONVERSION = {
             tuDinero: CAPITAL,
@@ -28,7 +35,14 @@ function calcularConversion() {
         actualizarHistorial(historial);
         
     } else {
-        document.getElementById("resultado").innerHTML = "Debe ingresar un monto valido";
+        Swal.fire({
+            icon: "error",
+            text: "Debe ingresar un monto valido",
+            showConfirmButton: false,
+            position: "top",
+            timer: 2500,
+            toast: true
+        });
     }
 };
 
