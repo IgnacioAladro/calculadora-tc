@@ -1,11 +1,39 @@
 function calcularConversion() {
     const CAPITAL = parseFloat(document.getElementById("capital").value);
     const DIVISA = document.getElementById("divisa").value;
-    const TIPO_DE_CAMBIO = {
-        eur: 847,
-        usd: 805,
-        cny: 110,
-        btc: 9501396
+    const TIPO_DE_CAMBIO = { 
+        usd: fetch("https://criptoya.com/api/dolar/oficial")
+            .then(usd => usd.json())
+            .then(usd => {
+                const VALOR_USD = usd.blue;
+                console.log("Valor recibido:", VALOR_USD, typeof VALOR_USD);
+                return VALOR_USD;
+            }
+        ),
+        btc: fetch("https://criptoya.com/api/binance/btc/ars/0.1")
+            .then(btc => btc.json())
+            .then(btc => {
+                const VALOR_BTC = btc.ask;
+                console.log("Valor recibido:", VALOR_BTC, typeof VALOR_BTC);
+                return VALOR_BTC;
+            }
+        ),
+        eth: fetch("https://criptoya.com/api/binance/eth/ars/0.1")
+            .then(eth => eth.json())
+            .then(eth => {
+                const VALOR_ETH = eth.ask;
+                console.log("Valor y tipo recibido:", VALOR_ETH, typeof VALOR_ETH);
+                return VALOR_ETH;
+            }
+        ),
+        bnb: fetch("https://criptoya.com/api/binance/bnb/ars/0.1")
+            .then(bnb => bnb.json())
+            .then(bnb => {
+                const VALOR_BNB = bnb.ask;
+                console.log("Valor y tipo recibido:", VALOR_BNB, typeof VALOR_BNB);
+                return VALOR_BNB;
+            }
+        )
     };
 
     if (isNaN(CAPITAL) || CAPITAL <= 0) {
@@ -21,13 +49,13 @@ function calcularConversion() {
     }
 
     if (!isNaN(CAPITAL) && TIPO_DE_CAMBIO[DIVISA]) {
-        const RESULTADO = (CAPITAL / TIPO_DE_CAMBIO[DIVISA]).toFixed(DIVISA === "btc" ? 8 : 2);
+        const RESULTADO = (CAPITAL / TIPO_DE_CAMBIO[DIVISA]).toFixed(DIVISA === "btc" ? 8 : 2).toString().replace(".", ",");
         const FECHA_HORA = luxon.DateTime;
 
-        document.getElementById("resultado").innerHTML = `${CAPITAL} ARS = ${RESULTADO} ${DIVISA.toUpperCase()}`;
+        document.getElementById("resultado").innerHTML = `${CAPITAL.toLocaleString("es-AR")} ARS = ${RESULTADO} ${DIVISA.toUpperCase()}`;
 
         const CONVERSION = {
-            tuDinero: CAPITAL,
+            tuDinero: CAPITAL.toLocaleString("es-AR"),
             monedaQueElegiste: DIVISA.toUpperCase(),
             resultado: RESULTADO,
             fechaHora: FECHA_HORA.now().toFormat("dd/MM/yyyy - HH:mm:ss")
