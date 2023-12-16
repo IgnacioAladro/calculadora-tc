@@ -41,9 +41,6 @@ Una aplicación web simple para calcular la conversión de monedas. Puedes ingre
 
 Siéntete libre de contribuir al desarrollo de esta aplicación. Puedes abrir problemas (issues) o enviar solicitudes de extracción (pull requests) para mejorar la funcionalidad o solucionar problemas existentes.
 
-## Licencia
-
-Este proyecto está bajo la Licencia [MIT](LICENSE).
 
 ---
 *Este README fue creado con ❤️ usando Markdown.*
