@@ -1,19 +1,49 @@
+# Calculadora de Conversión de Monedas
 
-# Calculadora para el cambio de PESOS ARGENTINOS a Dolares Estadounidenses y las cripto divisas mas importantes actualmente
+Una aplicación web simple para calcular la conversión de monedas. Puedes ingresar la cantidad en pesos argentinos, seleccionar la divisa de destino y obtener el resultado de la conversión.
 
-En este desarrollo van a encontrar el comienzo de un proyecto que va a buscar ser una herramienta para las personas que, como yo, operan los mercados de valores todos los dias y utilizamos heramientas que suelen estar en diferentes lugares. La idea principal es poder amalgamarlas en una pantalla facil de ver y navegar.
+## Características
 
-En esta primera version esta disponible la calculadora de cambio de divisas facil de usar e intuitiva.
+- Interfaz amigable con Bootstrap.
+- Utiliza SweetAlert2 para mostrar mensajes interactivos.
+- Mantiene un historial de conversiones con fecha y hora.
+- Permite borrar el historial de conversiones.
+- Utiliza Fetch API para obtener los tipos de cambio en tiempo real.
+- Guarda el historial en el almacenamiento local del navegador.
 
-Modo de uso:
-Ingresar el monto que deseamos cambiar en pesos argentinos y elegir la divisa por la cual queremos cambiar. Ademas podemos aprovechar el historial que nos deja guardado las conversiones que realizamos junta con la fehca, la hora y el tipo de cambio.
+## Uso
 
+1. Abre el archivo `index.html` en tu navegador web.
+2. Ingresa la cantidad en pesos argentinos.
+3. Selecciona la divisa de destino.
+4. Haz clic en el botón "Calcular" para obtener el resultado.
+5. El historial de conversiones se muestra debajo del formulario.
 
-## Autor
+## Tecnologías Utilizadas
 
-- [@NachoAladro](https://github.com/IgnacioAladro)
+- HTML
+- JavaScript (con Luxon para manejo de fechas y horas)
+- SweetAlert2
+- Bootstrap
+- Fetch API para obtener tipos de cambio en tiempo real.
 
+## Estructura de Carpetas
 
-## Estado del Desarrollo
+- `assets/js/mainCalculadora.js`: Contiene el script principal de la calculadora.
 
-En proceso activo
+## Dependencias Externas
+
+- [Bootstrap](https://getbootstrap.com/)
+- [SweetAlert2](https://sweetalert2.github.io/)
+- [Luxon](https://moment.github.io/luxon/)
+
+## Contribuciones
+
+Siéntete libre de contribuir al desarrollo de esta aplicación. Puedes abrir problemas (issues) o enviar solicitudes de extracción (pull requests) para mejorar la funcionalidad o solucionar problemas existentes.
+
+## Licencia
+
+Este proyecto está bajo la Licencia [MIT](LICENSE).
+
+---
+*Este README fue creado con ❤️ usando Markdown.*
